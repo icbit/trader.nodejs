@@ -1,10 +1,10 @@
-node.js trading library for Bitfloor and MtGox
+node.js trading library for ICBIT and MtGox
 
 The library is written using a typical node.js event/callback approach. See below for quick usage and the 'examples' directory for more detailed examples. All of the APIs described below are a work in progress and being actively developed. Suggestions are welcome.
 
 ##Install##
 
-    npm install git://github.com/bitfloor/trader.nodejs.git
+    npm install git://github.com/icbit/trader.nodejs.git
 
 ##Market Data##
 
@@ -15,19 +15,19 @@ var book_builder = require('btctrader').books;
 
 // we can ask the book builder to create a book of any supported type
 // as long as the returned book object emits the right events it will work
-var bitfloor_book = book_builder.build({
+var icbit_book = book_builder.build({
     // common options
-    exchange: 'bitfloor', // bitfloor or mtgox
-    protocol: 'rest', // only 'rest' is supported for now
+    exchange: 'icbit', // icbit or mtgox
+    protocol: 'rest', // 'rest' for mtgox and 'sio' for ICBIT
     depth: 'L1', // only L1 is supported for now
 
     // exchange specific
-    host: 'api.bitfloor.com',
+    host: 'api.icbit.se',
     product: 1,
 });
 
 // errors will be emitted to the typical error event
-bitfloor_book.on('error', function(err) {
+icbit_book.on('error', function(err) {
 });
 
 // the L1 book emits a 'changed' event when there is an update
@@ -47,13 +47,13 @@ Setup to enter orders is very similar to the book builder. You initialize a trad
 var trader_builder = require('btctrader').traders;
 
 var trader = trader_builder.build({
-    exchange: 'bitfloor',
+    exchange: 'icbit',
 
     // exchange specific
-    protocol: 'rest',
-    host: 'api.bitfloor.com',
-    sec_key: ..., // your bitfloor sec key
-    api_key: ..., // your bitfloor api key
+    protocol: 'sio',
+    host: 'api.icbit.se',
+    sec_key: ..., // your ICBIT sec key
+    api_key: ..., // your ICBIT api key
 });
 
 // send a new order to the exchange

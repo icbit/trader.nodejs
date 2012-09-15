@@ -1,17 +1,16 @@
 {
-  "author": "Roman Shtylman <shtylman@gmail.com>",
+  "author": "Icbit <info@icbit.se>",
   "name": "btctrader",
   "description": "javascript bitcoin trading library for nodejs",
-  "version": "0.0.1",
-  "homepage": "https://github.com/bitfloor/trader.nodejs",
+  "version": "0.1",
+  "homepage": "https://github.com/icbit/trader.nodejs",
   "repository": {
     "type": "git",
-    "url": "git://github.com/bitfloor/trader.nodejs.git"
+    "url": "git://github.com/icbit/trader.nodejs.git"
   },
   "dependencies": {
-    "microtime": "0.2.0",
     "colors": "0.6.0-1",
-    "decimal": "git://github.com/bitfloor/node-decimal.git#a3bb6f"
+    "socket.io-client":""
   },
   "devDependencies": {}
 }
