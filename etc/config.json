@@ -1,6 +1,15 @@
 {
-    "api_key": "your-api-key-here",
-    "sec_key": "your-secret-key-here",
-    "host": "api.testnet.bitfloor.com",
-    "port": 443
+    "exchange": "icbit", // this is what CLI trading app will use
+    "mtgox": {
+        "api_key": "",
+        "sec_key": "",
+        "host": "mtgox.com",
+        "port": 443
+    },
+    "icbit": {
+        "api_key": "", // your ICBIT user id
+        "sec_key": "", // your ICBIT auth key
+        "host": "api.icbit.se",
+        "port": 443
+    }       
 }

@@ -19,18 +19,18 @@ var config = JSON.parse(fs.readFileSync(process.argv[2]));
 var exchange = config.exchange;
 
 // for order entry
-var api_key = config.api_key;
-var sec_key = config.sec_key;
+var api_key = config[exchange].api_key;
+var sec_key = config[exchange].sec_key;
 
 // order entry and market data
-var host = config.host;
+var host = config[exchange].host;
 
 // setup order entry
 var trader = trader_builder.build({
     exchange: exchange,
     protocol: 'rest',
     host: host,
-    port: config.port,
+    port: config[exchange].port,
     api_key: api_key,
     sec_key: sec_key,
 });
@@ -47,6 +47,7 @@ var handlers = {
         }
 
         var details = {
+			market_id: 1,
             product_id: params.shift(),
             size: params.shift(),
             price: params.shift(),
@@ -70,6 +71,7 @@ var handlers = {
         }
 
         var details = {
+			market_id: 1,
             product_id: params.shift(),
             size: params.shift(),
             price: params.shift(),
@@ -87,14 +89,15 @@ var handlers = {
         });
     },
     'cancel': function(params, cb) {
-        if (params.length != 2) {
-            console.log('cancel <product_id> <order_id>');
+        if (params.length != 3) {
+            console.log('cancel <product_id> <order_id> <market_id>');
             return cb();
         }
 
         var details = {
             product_id: params.shift(),
             order_id: params.shift(),
+            market_id: params.shift()
         }
 
         trader.cancel_order(details, function(err, detail) {
@@ -154,8 +157,8 @@ var handlers = {
 
             orders.forEach(function(order) {
                 var side = (order.side === 0) ? 'buy' : 'sell';
-                console.log('[%s] %s %d @ %d'.yellow,
-                            order.id, side, order.size, order.price);
+                console.log('[%s] %s %d @ %d %s'.yellow,
+                            order.id, side, order.size, order.price, order.status);
             });
             cb();
         });
