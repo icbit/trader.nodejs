@@ -1,5 +1,5 @@
 {
-    "exchange": "icbit", // this is what CLI trading app will use
+    "exchange": "icbit",
     "mtgox": {
         "api_key": "",
         "sec_key": "",
@@ -7,8 +7,8 @@
         "port": 443
     },
     "icbit": {
-        "api_key": "", // your ICBIT user id
-        "sec_key": "", // your ICBIT auth key
+        "api_key": "", 
+        "sec_key": "",
         "host": "api.icbit.se",
         "port": 443
     }       

@@ -2,15 +2,16 @@
   "author": "Icbit <info@icbit.se>",
   "name": "btctrader",
   "description": "javascript bitcoin trading library for nodejs",
-  "version": "0.1",
+  "version": "0.0.1",
   "homepage": "https://github.com/icbit/trader.nodejs",
   "repository": {
     "type": "git",
     "url": "git://github.com/icbit/trader.nodejs.git"
   },
   "dependencies": {
+    "socket.io-client":"",
     "colors": "0.6.0-1",
-    "socket.io-client":""
+    "num": ""
   },
   "devDependencies": {}
 }
